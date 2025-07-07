@@ -10,10 +10,10 @@ let quotes = [];
 fetch('https://mgungorchamp.github.io/mycat/quotes.json')
     .then(res => res.json()) // Convert the response to a JavaScript object
     .then(data => {
-        quotes = data; // Store the quotes in the global array
-        showRandomQuote(); // Show a random quote immediately when the page loads
+        quotes = data;                                                                 // Store the quotes
+        showRandomQuote();                                                         // random quote
     })
-    .catch(err => {
+    .catch(err => { //GIVEN
         // If something goes wrong (e.g., no internet), show a message
         quoteText.textContent = 'Could not load quote.';
         console.error(err); // Print the actual error to the console for debugging
@@ -21,16 +21,16 @@ fetch('https://mgungorchamp.github.io/mycat/quotes.json')
 
 // This function picks a random quote and updates the text on the page
 function showRandomQuote() {
-    // Just in case we don't have any quotes yet
+                                                                                        // add if quotes
     if (quotes.length === 0) return;
 
-    // Pick a random index between 0 and quotes.length - 1
+    // Pick a random index between 0 and quotes.length - 1 - GIVEN
     const randomIndex = Math.floor(Math.random() * quotes.length);
 
     // Get the quote object from the array
     const selected = quotes[randomIndex];
 
-    // Update the page with the quote and author
+                                                                                        // quote and author
     quoteText.textContent = `"${selected.quote}"`;
     quoteAuthor.textContent = `— ${selected.author}`;
 }
